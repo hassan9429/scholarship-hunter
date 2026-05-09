@@ -10,6 +10,26 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
+import streamlit as st
+import streamlit.components.v1 as components
+
+# Paste your Measurement ID here
+GA_ID = "G-KZ6LXW693R"
+
+# This snippet injects the Google Tag into the app
+components.html(
+    f"""
+    <script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){{dataLayer.push(arguments);}}
+        gtag('js', new Date());
+        gtag('config', '{GA_ID}');
+    </script>
+    """,
+    height=0,
+)
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
